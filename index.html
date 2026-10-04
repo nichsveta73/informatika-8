@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Інформатика 8 клас — конспекти уроків</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#244b9b,#6b4fc7);color:white;padding:52px 20px 44px}
+.wrap{max-width:1100px;margin:auto} h1{font-size:clamp(30px,5vw,52px);margin:0 0 10px} header p{font-size:18px;margin:4px 0;opacity:.94}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0} input{flex:1;min-width:240px;border:0;border-radius:14px;padding:15px 18px;font-size:16px;box-shadow:0 5px 20px #1b255022}
+main{padding:24px 20px 60px} .topic{background:white;border-radius:18px;margin:16px 0;box-shadow:0 5px 22px #23315b14;overflow:hidden}
+.topic-head{width:100%;border:0;background:white;padding:20px;text-align:left;font-size:19px;font-weight:750;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:#172033}
+.topic-head em{font-style:normal;background:#e8edff;color:#3552a5;border-radius:12px;padding:8px 12px;margin-right:12px}
+.lessons{padding:0 16px 16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lesson{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;border:1px solid #e4e9f2;border-radius:14px;padding:13px;background:#fbfcff;transition:.15s}
+.lesson:hover{transform:translateY(-1px);border-color:#8ba0df;box-shadow:0 5px 14px #23315b12}
+.num{min-width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#edf1ff;color:#3552a5;font-weight:800}
+.lessontext{flex:1} .lessontext b{display:block;font-size:14px;line-height:1.35} small{display:block;margin-top:5px;color:#6c7485} .arrow{font-size:20px;color:#6677b8}
+footer{text-align:center;color:#6c7485;padding:22px} .hidden{display:none!important}
+@media(max-width:720px){.lessons{grid-template-columns:1fr} header{padding-top:38px}}
+</style></head>
+<body><header><div class="wrap"><h1>Інформатика • 8 клас</h1>
+<p>Конспекти уроків • 2026–2027 навчальний рік</p>
+<p>Навігація за календарно-тематичним плануванням</p>
+<div class="toolbar"><input id="search" placeholder="🔎  Знайти урок або тему…" oninput="filterLessons()"></div>
+</div></header>
+<main class="wrap">
+<section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>1</em>Тема 1. Кодування даних і апаратне забезпечення інформаційної системи</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-01.html">
+          <span class="num">1</span><span class="lessontext"><b>Опрацювання даних в інформаційних системах. Кодування та декодування повідомлень</b>
+          <small>07.09.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-02.html">
+          <span class="num">2</span><span class="lessontext"><b>Двійкове кодування. Одиниці вимірювання довжини двійкового коду. Кодування тексту. Таблиці кодів символів</b>
+          <small>14.09.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-03.html">
+          <span class="num">3</span><span class="lessontext"><b>Кодування графічних даних. Практична робота 1. Визначення довжини двійкового коду текстових даних</b>
+          <small>21.09.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-04.html">
+          <span class="num">4</span><span class="lessontext"><b>Персональний комп’ютер, його основні складові. Процесор, пристрої пам’яті, уведення та виведення інформації</b>
+          <small>28.09.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-05.html">
+          <span class="num">5</span><span class="lessontext"><b>Історія обчислювальних пристроїв. Види сучасних комп’ютерів та їх застосування</b>
+          <small>05.10.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-06.html">
+          <span class="num">6</span><span class="lessontext"><b>Практична робота 2. Визначення конфігурації комп’ютера під потребу</b>
+          <small>12.10.2026</small></span>
+          <span class="arrow">→</span></a></div></section><section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>2</em>Тема 2. Створення та публікація вебресурсів</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-07.html">
+          <span class="num">7</span><span class="lessontext"><b>Адресація в інтернеті. Обмін даними в інтернеті</b>
+          <small>19.10.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-08.html">
+          <span class="num">8</span><span class="lessontext"><b>Створення сайтів. Автоматизовані засоби для створення та публікації вебресурсів</b>
+          <small>02.11.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-09.html">
+          <span class="num">9</span><span class="lessontext"><b>Поняття про мову гіпертекстової розмітки. Розмічання тексту</b>
+          <small>09.11.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-10.html">
+          <span class="num">10</span><span class="lessontext"><b>Зображення та гіперпосилання на вебсторінці</b>
+          <small>16.11.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-11.html">
+          <span class="num">11</span><span class="lessontext"><b>Розмічання таблиць засобами HTML</b>
+          <small>23.11.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-12.html">
+          <span class="num">12</span><span class="lessontext"><b>Практична робота 3. Створення головної сторінки сайту засобами HTML</b>
+          <small>30.11.2026</small></span>
+          <span class="arrow">→</span></a></div></section><section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>3</em>Тема 3. Опрацювання текстових даних</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-13.html">
+          <span class="num">13</span><span class="lessontext"><b>Основні етапи створення текстового документа. Пошук і заміна фрагментів тексту</b>
+          <small>07.12.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-14.html">
+          <span class="num">14</span><span class="lessontext"><b>Форматування об’єктів текстового документа. Практична робота 4</b>
+          <small>14.12.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-15.html">
+          <span class="num">15</span><span class="lessontext"><b>Структура документа. Форматування з використанням стилів. Колонтитули. Гіперпосилання</b>
+          <small>21.12.2026</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-16.html">
+          <span class="num">16</span><span class="lessontext"><b>Автоматизоване створення змісту документа. Практична робота 5</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-17.html">
+          <span class="num">17</span><span class="lessontext"><b>Спільна робота з документом</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-18.html">
+          <span class="num">18</span><span class="lessontext"><b>Практична робота 6. Створення документа на хмарному диску для спільного опрацювання</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a></div></section><section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>4</em>Тема 4. Опрацювання мультимедійних об’єктів</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-19.html">
+          <span class="num">19</span><span class="lessontext"><b>Поняття мультимедіа. Кодування аудіоданих. Формати аудіофайлів</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-20.html">
+          <span class="num">20</span><span class="lessontext"><b>Кодування відеоданих. Формати відеофайлів. Використання аудіо- й відеоданих у Python</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-21.html">
+          <span class="num">21</span><span class="lessontext"><b>Програмне забезпечення для опрацювання аудіоданих. Захоплення аудіо</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-22.html">
+          <span class="num">22</span><span class="lessontext"><b>Програмне забезпечення для опрацювання відеоданих. Захоплення відео</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-23.html">
+          <span class="num">23</span><span class="lessontext"><b>Побудова аудіо- та відеоряду</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-24.html">
+          <span class="num">24</span><span class="lessontext"><b>Опрацювання, збереження та розміщення відеокліпу в інтернеті. Практична робота 9</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-25.html">
+          <span class="num">25</span><span class="lessontext"><b>Практична робота 10. Розміщення відеоматеріалів в інтернеті</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a></div></section><section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>5</em>Тема 5. Алгоритми та програми</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-26.html">
+          <span class="num">26</span><span class="lessontext"><b>Сучасні мови програмування. Середовище програмування</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-27.html">
+          <span class="num">27</span><span class="lessontext"><b>Налагодження програмного коду</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-28.html">
+          <span class="num">28</span><span class="lessontext"><b>Графічний інтерфейс користувача</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-29.html">
+          <span class="num">29</span><span class="lessontext"><b>Обробники подій, пов’язаних з елементами керування</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-30.html">
+          <span class="num">30</span><span class="lessontext"><b>Організація діалога користувача з програмою. Практична робота 11</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-31.html">
+          <span class="num">31</span><span class="lessontext"><b>Величини. Числові типи даних. Математичні функції</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-32.html">
+          <span class="num">32</span><span class="lessontext"><b>Рядковий тип даних</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-33.html">
+          <span class="num">33</span><span class="lessontext"><b>Робота з текстовими файлами</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-34.html">
+          <span class="num">34</span><span class="lessontext"><b>Логічний тип даних. Вкладені розгалуження</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-35.html">
+          <span class="num">35</span><span class="lessontext"><b>Елементи вибору: прапорці, перемикачі</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-36.html">
+          <span class="num">36</span><span class="lessontext"><b>Алгоритми з повтореннями. Цикл із параметром. Цикл із передумовою</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-37.html">
+          <span class="num">37</span><span class="lessontext"><b>Вкладені цикли. Практична робота 12. Створення програми з графічним інтерфейсом</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-38.html">
+          <span class="num">38</span><span class="lessontext"><b>Графічні методи модуля tkinter</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-39.html">
+          <span class="num">39</span><span class="lessontext"><b>Створення анімації</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-40.html">
+          <span class="num">40</span><span class="lessontext"><b>Практична робота 13. Моделювання руху об’єктів</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a></div></section><section class="topic"><button class="topic-head" onclick="toggle(this)">
+      <span><em>6</em>Тема 6. Практикум з використання інформаційних технологій</span><span>⌄</span></button>
+      <div class="lessons"><a class="lesson" href="lesson-41.html">
+          <span class="num">41</span><span class="lessontext"><b>Практична робота 14. Створення текстового документа, що містить об’єкти різних типів</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-42.html">
+          <span class="num">42</span><span class="lessontext"><b>Практична робота 15. Створення багатосторінкового електронного документа</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-43.html">
+          <span class="num">43</span><span class="lessontext"><b>Практична робота 16. Розробка застосунку «Піаніно»</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-44.html">
+          <span class="num">44</span><span class="lessontext"><b>Практична робота 17. Створення програми з графічним інтерфейсом</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-45.html">
+          <span class="num">45</span><span class="lessontext"><b>Практична робота 18. Створення програми «Калькулятор»</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-46.html">
+          <span class="num">46</span><span class="lessontext"><b>Практична робота 19. Моделювання руху об’єкта</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-47.html">
+          <span class="num">47</span><span class="lessontext"><b>Практикум з використання інформаційних технологій</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-48.html">
+          <span class="num">48</span><span class="lessontext"><b>Практикум з використання інформаційних технологій</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-49.html">
+          <span class="num">49</span><span class="lessontext"><b>Практикум з використання інформаційних технологій</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-50.html">
+          <span class="num">50</span><span class="lessontext"><b>Практикум з використання інформаційних технологій</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-51.html">
+          <span class="num">51</span><span class="lessontext"><b>Практикум з використання інформаційних технологій</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-52.html">
+          <span class="num">52</span><span class="lessontext"><b>Практикум з використання інформаційних технологій. Підсумкове оцінювання за 2 семестр</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a><a class="lesson" href="lesson-53.html">
+          <span class="num">53</span><span class="lessontext"><b>Узагальнення та систематизація знань, умінь і навичок</b>
+          <small>Конспект буде додано</small></span>
+          <span class="arrow">→</span></a></div></section>
+</main>
+<footer>Навчальний сайт • Інформатика 8 клас</footer>
+<script>
+function toggle(btn){btn.nextElementSibling.classList.toggle('hidden')}
+function filterLessons(){
+ const q=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('.topic').forEach(topic=>{
+   let any=false;
+   topic.querySelectorAll('.lesson').forEach(a=>{let ok=a.innerText.toLowerCase().includes(q);a.style.display=ok?'flex':'none';if(ok)any=true});
+   topic.style.display=(any||topic.querySelector('.topic-head').innerText.toLowerCase().includes(q))?'block':'none';
+ });
+}
+</script></body></html>

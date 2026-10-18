@@ -1,0 +1,240 @@
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Інформатика 8 клас — Адресація та обмін даними в інтернеті</title>
+<style>
+:root{--blue:#2457a7;--blue2:#eaf2ff;--ink:#182338;--muted:#5b667a;--line:#dce3ee;--bg:#f4f7fb;--green:#16794b;--red:#b42318;--gold:#8a5a00}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
+header{background:linear-gradient(125deg,#173b78,#3479c9);color:#fff;padding:28px 20px 22px}
+.wrap{max-width:1100px;margin:auto;padding:0 18px}
+.kicker{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;opacity:.9}
+h1{font-size:clamp(1.8rem,4vw,2.65rem);line-height:1.15;margin:.45rem 0}
+header p{max-width:800px;margin:.6rem 0 1rem}
+.progress-shell{height:9px;background:#ffffff55;border-radius:99px;overflow:hidden;margin-top:18px}
+#progress{height:100%;width:0;background:#ffd166;transition:width .25s}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 12px #172b4d0a}
+.navinner{display:flex;gap:8px;overflow-x:auto;padding:10px 18px;max-width:1100px;margin:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--blue);font-weight:700;font-size:.9rem;border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+main{max-width:1100px;margin:22px auto;padding:0 18px 48px}
+section,.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin:0 0 18px;box-shadow:0 4px 14px #14213d08}
+h2{font-size:1.45rem;margin:0 0 12px;color:#183d77}h3{font-size:1.1rem;margin:18px 0 8px}
+p{margin:8px 0}ul,ol{padding-left:1.35rem}li{margin:5px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:15px;background:#fbfcff}
+.tag{display:inline-block;background:var(--blue2);color:var(--blue);padding:4px 9px;border-radius:999px;font-size:.82rem;font-weight:700}
+.callout{background:#f0f6ff;border-left:4px solid var(--blue);padding:12px 15px;border-radius:8px;margin:12px 0}
+button,.button{cursor:pointer;border:0;background:var(--blue);color:#fff;padding:10px 15px;border-radius:9px;font-size:1rem;font-weight:700}
+button.secondary{background:#edf2f8;color:var(--ink);border:1px solid var(--line)}
+button:hover{filter:brightness(.96)}
+.options{display:grid;gap:8px;margin:10px 0}
+.option{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer;background:#fff}
+.option input{margin-top:5px;accent-color:var(--blue)}
+.feedback{margin-top:10px;font-weight:700;min-height:1.5em}
+.good{color:var(--green)}.bad{color:var(--red)}.hint{color:var(--muted);font-size:.93rem}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.96rem}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#edf3fb}
+input[type=text],select,textarea{width:100%;padding:10px;border:1px solid #b9c5d7;border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:70px;resize:vertical}
+.formrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:10px 0}
+.resultbox{background:#f7f9fc;border:1px dashed #aab9ce;border-radius:10px;padding:12px;margin-top:10px}
+.packet-row{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.packet{border:2px solid #3974c5;border-radius:10px;background:#eaf2ff;padding:12px 16px;min-width:95px;text-align:center;font-weight:700}
+.packet button{display:block;margin:8px auto 0;padding:6px 9px;font-size:.85rem}
+.small{font-size:.88rem;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:600px){section,.card{padding:16px}th,td{padding:7px;font-size:.9rem}header{padding-top:22px}}
+@media print{nav,button,.progress-shell{display:none!important}body{background:white}section,.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="kicker">Інформатика • 8 клас • НУШ</div>
+<h1>Адресація в інтернеті.<br>Обмін даними в інтернеті</h1>
+<p>Досліди, як браузер знаходить сайт, як пристрої обмінюються даними та навіщо потрібні адреси й мережеві протоколи.</p>
+<span class="tag">45 хвилин</span> <span class="tag">Навчайся • досліджуй • перевіряй себе</span>
+<div class="progress-shell" aria-label="Прогрес проходження"><div id="progress"></div></div>
+<p class="small" style="color:#fff">Прогрес сторінки: <span id="progressText">0%</span></p>
+</div>
+</header>
+<nav><div class="navinner">
+<a href="#start">Початок</a><a href="#theory">Теорія</a><a href="#url">URL-детектив</a><a href="#ip">IP-адреси</a><a href="#packets">Пакети даних</a><a href="#quiz">Вікторина</a><a href="#reflection">Рефлексія</a><a href="#homework">Домашнє</a>
+</div></nav>
+<main>
+<section id="start">
+<h2>🎯 Що ти навчишся робити?</h2>
+<div class="grid">
+<div class="tile"><strong>Розрізняти адреси</strong><p>Пояснювати різницю між IP-адресою, доменним ім’ям і URL.</p></div>
+<div class="tile"><strong>Розуміти обмін даними</strong><p>Пояснювати, що таке пакет і як він передається мережею.</p></div>
+<div class="tile"><strong>Пояснювати протоколи</strong><p>Розуміти призначення IP, TCP, HTTP та HTTPS.</p></div>
+<div class="tile"><strong>Діяти безпечно</strong><p>Уважно перевіряти вебадреси та не вводити дані на підозрілих сайтах.</p></div>
+</div>
+<div class="callout"><strong>Проблемне запитання:</strong> коли ти вводиш адресу сайту в браузері, як комп’ютер розуміє, до якого сервера звернутися та як отримати сторінку?</div>
+<h3>Пригадай</h3>
+<p>Обговори з однокласником: що таке браузер, сервер і комп’ютерна мережа? Натисни, щоб звірити відповіді.</p>
+<details><summary><strong>Показати підказку</strong></summary><p>Браузер — програма для перегляду вебресурсів. Сервер надає ресурси чи послуги іншим пристроям. Комп’ютерна мережа — з’єднані пристрої, які можуть обмінюватися даними.</p></details>
+</section>
+
+<section id="theory">
+<h2>📘 Теорія коротко</h2>
+<h3>1. Що таке інтернет?</h3>
+<p><strong>Інтернет</strong> — глобальна система взаємопов’язаних комп’ютерних мереж, яка забезпечує обмін даними та доступ до ресурсів.</p>
+<div class="grid">
+<div class="tile"><strong>Апаратна складова</strong><p>Комп’ютери, сервери, маршрутизатори, канали зв’язку.</p></div>
+<div class="tile"><strong>Програмна складова</strong><p>Операційні системи, браузери, мережеві служби та програми.</p></div>
+<div class="tile"><strong>Інформаційна складова</strong><p>Вебсторінки, документи, зображення, відео та інші дані.</p></div>
+</div>
+<h3>2. IP-адреса</h3>
+<p><strong>IP-адреса</strong> допомагає ідентифікувати мережевий інтерфейс і спрямовувати дані до потрібного вузла.</p>
+<table><thead><tr><th>Формат</th><th>Приклад</th><th>Особливість</th></tr></thead><tbody>
+<tr><td>IPv4</td><td><code>192.168.1.25</code></td><td>Чотири числа від 0 до 255, розділені крапками.</td></tr>
+<tr><td>IPv6</td><td><code>2001:db8:1234::1</code></td><td>Групи шістнадцяткових цифр, розділені двокрапками; запис може скорочуватися.</td></tr>
+</tbody></table>
+<p>IP-адреса може бути постійною або динамічною. У локальних мережах часто використовують приватні адреси, наприклад <code>192.168.1.25</code>.</p>
+<h3>3. Доменне ім’я та DNS</h3>
+<p><strong>Доменне ім’я</strong> — зручна текстова назва ресурсу, наприклад <code>example.com</code>. <strong>DNS</strong> допомагає знайти IP-адресу, пов’язану з доменним ім’ям.</p>
+<div class="callout"><strong>Запам’ятай:</strong> DNS допомагає знайти адресу, але не передає весь вміст вебсторінки.</div>
+<h3>4. URL — адреса ресурсу</h3>
+<p><strong>URL</strong> — адреса, яка вказує, як звернутися до певного ресурсу та де він розташований.</p>
+<div class="resultbox"><strong>Приклад:</strong> <code>https://school.example.ua/materials/lesson6.html</code><ul><li><code>https://</code> — схема доступу;</li><li><code>school.example.ua</code> — доменне ім’я;</li><li><code>/materials/lesson6.html</code> — шлях до ресурсу;</li><li><code>lesson6.html</code> — ім’я файлу в цьому прикладі.</li></ul></div>
+<h3>5. Пакетне передавання даних</h3>
+<p>Під час передавання великі обсяги даних можуть поділятися на менші частини — <strong>пакети</strong>. Пакети передаються мережею, а на стороні одержувача дані збираються у вихідне повідомлення. Маршрутизатори спрямовують пакети до наступних вузлів.</p>
+<h3>6. Мережеві протоколи</h3>
+<table><thead><tr><th>Протокол</th><th>Для чого потрібен</th></tr></thead><tbody>
+<tr><td>IP</td><td>Адресація та передавання пакетів між мережами.</td></tr>
+<tr><td>TCP</td><td>Надійне впорядковане передавання потоку даних.</td></tr>
+<tr><td>HTTP</td><td>Обмін даними під час роботи з вебресурсами.</td></tr>
+<tr><td>HTTPS</td><td>Захищений обмін даними через HTTP.</td></tr>
+</tbody></table>
+<p><strong>Інтернет-провайдер</strong> — організація, яка надає користувачам доступ до інтернету. Wi-Fi — це спосіб бездротового з’єднання з локальною мережею, а не синонім інтернету.</p>
+</section>
+
+<section id="url">
+<h2>🔎 Інтерактивна вправа 1. URL-детектив</h2>
+<p>Розглянь адресу та вибери правильні відповіді. За кожну правильну відповідь отримуєш 1 бал.</p>
+<div class="callout"><code>https://school.example.ua/materials/lesson6.html</code></div>
+<div class="question" data-answer="https" data-explain="Схема доступу — https.">
+<p><strong>1. Яка схема доступу вказана в адресі?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="url1" value="http"> http</label><label class="option"><input type="radio" name="url1" value="https"> https</label><label class="option"><input type="radio" name="url1" value="www"> www</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="school.example.ua" data-explain="Доменне ім’я — school.example.ua.">
+<p><strong>2. Яке тут доменне ім’я?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="url2" value="lesson6.html"> lesson6.html</label><label class="option"><input type="radio" name="url2" value="school.example.ua"> school.example.ua</label><label class="option"><input type="radio" name="url2" value="materials"> materials</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="/materials/lesson6.html" data-explain="Шлях до ресурсу — /materials/lesson6.html.">
+<p><strong>3. Який запис указує на шлях до ресурсу?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="url3" value="/materials/lesson6.html"> /materials/lesson6.html</label><label class="option"><input type="radio" name="url3" value="https://"> https://</label><label class="option"><input type="radio" name="url3" value="school.example.ua"> school.example.ua</label></div><div class="feedback"></div>
+</div>
+<button onclick="checkQuestions('url')">Перевірити відповіді</button> <button class="secondary" onclick="resetQuestions('url')">Спробувати ще раз</button>
+<div id="urlScore" class="feedback"></div>
+</section>
+
+<section id="ip">
+<h2>🧮 Інтерактивна вправа 2. Перевір IPv4</h2>
+<p>Введи IPv4-адресу. Перевірка визначить, чи містить вона чотири числа від 0 до 255.</p>
+<div class="formrow"><div><label for="ipInput"><strong>IP-адреса</strong></label><input id="ipInput" type="text" placeholder="Наприклад, 192.168.1.25"></div><div style="align-self:end"><button onclick="checkIP()">Перевірити адресу</button></div></div>
+<div id="ipResult" class="resultbox" aria-live="polite">Тут з’явиться результат перевірки.</div>
+<p class="hint">Ця вправа перевіряє лише формат IPv4, а не те, чи існує адреса в реальній мережі.</p>
+<h3>Швидка класифікація</h3>
+<div class="question" data-answer="так" data-explain="192.168.0.10 — коректний запис IPv4.">
+<p><strong>4. Чи є 192.168.0.10 коректним записом IPv4?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="ipq1" value="так"> Так</label><label class="option"><input type="radio" name="ipq1" value="ні"> Ні</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="ні" data-explain="300 перевищує максимально допустиме значення 255.">
+<p><strong>5. Чи є 300.12.1.5 коректним записом IPv4?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="ipq2" value="так"> Так</label><label class="option"><input type="radio" name="ipq2" value="ні"> Ні</label></div><div class="feedback"></div>
+</div>
+<button onclick="checkQuestions('ipq')">Перевірити відповіді</button> <button class="secondary" onclick="resetQuestions('ipq')">Спробувати ще раз</button><div id="ipqScore" class="feedback"></div>
+</section>
+
+<section id="packets">
+<h2>📨 Інтерактивна вправа 3. Збери повідомлення</h2>
+<p>Уяви, що повідомлення поділили на три пакети. Натискай на пакети в правильному порядку: 1 → 2 → 3. Якщо помилишся, спробуй знову.</p>
+<div class="packet-row" id="packetRow">
+<div class="packet">Пакет 2<button onclick="choosePacket(2)">Обрати</button></div>
+<div class="packet">Пакет 1<button onclick="choosePacket(1)">Обрати</button></div>
+<div class="packet">Пакет 3<button onclick="choosePacket(3)">Обрати</button></div>
+</div>
+<div class="resultbox"><strong>Твоя послідовність:</strong> <span id="packetSequence">ще не обрано</span><p id="packetFeedback" class="feedback">Почни з пакета 1.</p></div>
+<button class="secondary" onclick="resetPackets()">Почати спочатку</button>
+<div class="callout"><strong>Подумай:</strong> чому для відновлення повідомлення важливо знати порядок його частин? У реальних мережах обробка залежить від протоколу; ця вправа є спрощеною моделлю.</div>
+</section>
+
+<section id="quiz">
+<h2>🧠 Підсумкова вікторина</h2>
+<p>Обери одну правильну відповідь у кожному запитанні. Максимум — 6 балів.</p>
+<div class="question" data-answer="DNS" data-explain="DNS допомагає знайти IP-адресу за доменним ім’ям.">
+<p><strong>6. Яка система допомагає знайти IP-адресу за доменним ім’ям?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q6" value="TCP"> TCP</label><label class="option"><input type="radio" name="q6" value="DNS"> DNS</label><label class="option"><input type="radio" name="q6" value="HTML"> HTML</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="правила" data-explain="Протокол — це набір правил обміну даними.">
+<p><strong>7. Що таке мережевий протокол?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q7" value="пристрій"> Фізичний пристрій у мережі</label><label class="option"><input type="radio" name="q7" value="правила"> Набір правил обміну даними</label><label class="option"><input type="radio" name="q7" value="адреса"> Назва вебсайту</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="надійне впорядковане передавання" data-explain="TCP забезпечує надійне впорядковане передавання потоку даних.">
+<p><strong>8. Яке призначення TCP?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q8" value="пошук сайтів"> Пошук доменних імен</label><label class="option"><input type="radio" name="q8" value="надійне впорядковане передавання"> Надійне впорядковане передавання потоку даних</label><label class="option"><input type="radio" name="q8" value="бездротовий зв’язок"> Забезпечення Wi-Fi</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="захищений обмін через HTTP" data-explain="HTTPS — захищений обмін даними через HTTP.">
+<p><strong>9. Що означає HTTPS у вебадресі?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q9" value="захищений обмін через HTTP"> Захищений обмін даними через HTTP</label><label class="option"><input type="radio" name="q9" value="тип комп’ютера"> Тип комп’ютера</label><label class="option"><input type="radio" name="q9" value="адреса принтера"> Адреса принтера</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="доступ до інтернету" data-explain="Провайдер надає доступ до інтернету та пов’язані послуги.">
+<p><strong>10. Яка основна роль інтернет-провайдера?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q10" value="доступ до інтернету"> Надавати доступ до інтернету</label><label class="option"><input type="radio" name="q10" value="створення всіх сайтів"> Створювати всі сайти</label><label class="option"><input type="radio" name="q10" value="заміна браузера"> Замінювати браузер</label></div><div class="feedback"></div>
+</div>
+<div class="question" data-answer="ні" data-explain="Wi-Fi забезпечує бездротове з’єднання з локальною мережею, але не гарантує доступу до інтернету.">
+<p><strong>11. Якщо пристрій під’єднаний до Wi-Fi, чи обов’язково він має доступ до інтернету?</strong></p>
+<div class="options"><label class="option"><input type="radio" name="q11" value="так"> Так, завжди</label><label class="option"><input type="radio" name="q11" value="ні"> Ні, Wi-Fi може працювати без зовнішнього інтернет-з’єднання</label></div><div class="feedback"></div>
+</div>
+<button onclick="checkQuestions('q')">Перевірити вікторину</button> <button class="secondary" onclick="resetQuestions('q')">Спробувати ще раз</button><div id="qScore" class="feedback"></div>
+</section>
+
+<section id="reflection">
+<h2>🚦 Рефлексія «Світлофор»</h2>
+<p>Обери колір, який найкраще описує твоє розуміння теми.</p>
+<div class="grid">
+<button style="background:#16834a" onclick="reflect('green')">🟢 Зелений — можу пояснити</button>
+<button style="background:#b77900" onclick="reflect('yellow')">🟡 Жовтий — ще маю запитання</button>
+<button style="background:#b42318" onclick="reflect('red')">🔴 Червоний — потрібна допомога</button>
+</div>
+<div id="reflectionResult" class="resultbox" aria-live="polite">Обери свій колір.</div>
+<h3>Закінчи речення</h3>
+<label for="sentence"><strong>Сьогодні я зрозумів / зрозуміла, що…</strong></label>
+<textarea id="sentence" placeholder="Напиши коротку відповідь тут…"></textarea>
+<button class="secondary" onclick="saveReflection()">Показати мою відповідь</button>
+<div id="sentenceResult" class="resultbox"></div>
+</section>
+
+<section id="homework">
+<h2>🏠 Домашнє завдання</h2>
+<div class="grid">
+<div class="tile"><span class="tag">Обов’язково</span><p>Повтори поняття: IP-адреса, доменне ім’я, DNS, URL, пакет даних, мережевий протокол, інтернет-провайдер.</p><p>Розбери адресу <code>https://example.com/folder/page.html</code>: визнач схему, домен і шлях.</p></div>
+<div class="tile"><span class="tag">На вибір</span><p>Створи схему передавання повідомлення пакетами або пам’ятку «5 правил безпечної роботи з вебадресами».</p></div>
+</div>
+<h3>Правила цифрової безпеки</h3>
+<ul><li>Перевіряй адресу сайту перед відкриттям посилання.</li><li>Не вводь паролі й особисті дані на підозрілих сторінках.</li><li>HTTPS означає захищене з’єднання, але не гарантує чесності самого сайту.</li><li>Не відкривай невідомі файли з ненадійних джерел.</li></ul>
+</section>
+<footer>Інформатика 8 клас • Навчайся безпечно та відповідально</footer>
+</main>
+<script>
+function updateProgress(){let max=document.documentElement.scrollHeight-window.innerHeight;let p=max>0?Math.round(window.scrollY/max*100):0;document.getElementById('progress').style.width=p+'%';document.getElementById('progressText').textContent=p+'%';}
+window.addEventListener('scroll',updateProgress);window.addEventListener('resize',updateProgress);updateProgress();
+function checkQuestions(prefix){let questions=[...document.querySelectorAll('#'+prefix+' .question')];let score=0;questions.forEach(q=>{let selected=q.querySelector('input:checked');let fb=q.querySelector('.feedback');if(!selected){fb.textContent='Обери відповідь.';fb.className='feedback bad';return;}if(selected.value===q.dataset.answer){score++;fb.textContent='Правильно! '+q.dataset.explain;fb.className='feedback good';}else{fb.textContent='Спробуй ще. '+q.dataset.explain;fb.className='feedback bad';}});let scoreEl=document.getElementById(prefix+'Score');if(scoreEl){scoreEl.textContent='Результат: '+score+' із '+questions.length+' балів.';scoreEl.className='feedback '+(score===questions.length?'good':'');}}
+function resetQuestions(prefix){document.querySelectorAll('#'+prefix+' .question').forEach(q=>{q.querySelectorAll('input').forEach(i=>i.checked=false);let f=q.querySelector('.feedback');f.textContent='';f.className='feedback';});let s=document.getElementById(prefix+'Score');if(s)s.textContent='';}
+function checkIP(){let v=document.getElementById('ipInput').value.trim();let out=document.getElementById('ipResult');let parts=v.split('.');let ok=parts.length===4&&parts.every(p=>/^\d+$/.test(p)&&Number(p)>=0&&Number(p)<=255);if(ok){out.innerHTML='<strong class="good">Схоже на коректний запис IPv4.</strong><p>У записі чотири числа, кожне в межах 0–255.</p>';}else{out.innerHTML='<strong class="bad">Це не коректний запис IPv4.</strong><p>Перевір: мають бути чотири числа, розділені крапками, кожне від 0 до 255.</p>';}}
+let packetOrder=[];
+function choosePacket(n){if(packetOrder.includes(n)){document.getElementById('packetFeedback').textContent='Цей пакет уже обрано. Обери інший.';return;}packetOrder.push(n);document.getElementById('packetSequence').textContent=packetOrder.join(' → ');let fb=document.getElementById('packetFeedback');if(n!==packetOrder.length){fb.textContent='Не зовсім! Для відновлення починай з пакета 1. Натисни «Почати спочатку».';fb.className='feedback bad';}else if(packetOrder.length===3){fb.textContent='Чудово! Ти зібрав/зібрала пакети в правильному порядку: 1 → 2 → 3.';fb.className='feedback good';}else{fb.textContent='Правильно! Продовжуй.';fb.className='feedback good';}}
+function resetPackets(){packetOrder=[];document.getElementById('packetSequence').textContent='ще не обрано';document.getElementById('packetFeedback').textContent='Почни з пакета 1.';document.getElementById('packetFeedback').className='feedback';}
+function reflect(color){let m={green:'Чудово! Спробуй пояснити однокласнику різницю між IP-адресою, доменним ім’ям і URL.',yellow:'Це нормально. Познач у зошиті запитання, яке залишилося, і постав його вчителю.',red:'Попроси повторити приклад із URL або модель передавання пакетів. Спробуй ще раз із підказкою.'};document.getElementById('reflectionResult').textContent=m[color];}
+function saveReflection(){let v=document.getElementById('sentence').value.trim();document.getElementById('sentenceResult').textContent=v?'Твоя відповідь: '+v:'Спочатку напиши завершення речення.';}
+</script>
+</body>
+</html>'''
+path = Path("/mnt/data/urok-adresaciya-obmin-danymy.html")
+path.write_text(html, encoding="utf-8")
+print(f"Створено файл: {path}\nРозмір: {path.stat().st_size:,} байтів")
